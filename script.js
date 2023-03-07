@@ -1,20 +1,31 @@
 // code here
 
-// function that implements a 5 round game and keeps score
+const rockSel = document.querySelector("#rock");
+const paperSel = document.querySelector("#paper");
+const scissorsSel = document.querySelector("#scissors");
 
-function game(){
+rockSel.addEventListener("click", function(e){
+    game("rock");
+});
+
+paperSel.addEventListener("click", function(e){
+   game("paper");
+});
+
+
+paperSel.addEventListener("click", function(e){
+    game("scissors");
+ });
+
+function game(playerSelection){
     
     //these two variables will keep the score
     let computerScore = 0;
     let playerScore = 0;
 
-    for (let i=0; i<2; i++)
-    {
-        //we prompt the user for input
-        let playerSelection = prompt("Please enter rock, paper or scissors: ");
-        //play one round and decide who wins, also increment the score of the winner.
-        playRound(playerSelection,getComputerChoice())? playerScore++ : computerScore++;
-    }
+
+    //play one round and decide who wins, also increment the score of the winner.
+    playRound(playerSelection,getComputerChoice())? playerScore++ : computerScore++;
 
     console.log(`The final score is: ${playerScore} to ${computerScore}`);
     if(playerScore == computerScore)
@@ -70,5 +81,3 @@ function getComputerChoice(){
     return 'Rock';
     return a < 0.33? 'Paper':'Scissors'
 }
-
-game();
